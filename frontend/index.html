@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="output.css" rel="stylesheet">
+</head>
+<body class="min-h-screen flex justify-center items-center flex-col">
+    <h1 class="text-3xl font-bold mb-4 text-blue-600">Fan Clicking Game</h1>
+    <div class="text-blue-600 font-bold">Speed: <span id="speed">1</span>x</div>
+    <div id="fan" class="relative  w-[300px] h-[300px] m-8  rounded-full">
+        <span class="line top-[50%] left-[51%]"></span>
+        <span class="line top-[52%] left-[51%] rotate-[120deg]"></span>
+        <span class="line top-[51%] left-[49%] rotate-[240deg]"></span>
+        <span class="absolute top-[45%] left-[43%] w-[40px] h-[40px] bg-blue-200 rounded-full origin-[0%_0%]"></span>
+    </div>
+    <div class="flex">
+        <button id="btnOpen" class="button">Open</button>
+        <button id="btnClose" class="button">Close</button>
+        <button id="addSpeed" class="button">Speed</button>
+    </div>
+    
+
+    <script>
+        const btnOpen = document.getElementById("btnOpen");
+        const btnClose = document.getElementById("btnClose");
+        const addSpeed = document.getElementById("addSpeed");
+        const speedDisplay = document.getElementById('speed');
+        const fan = document.getElementById("fan");
+
+        let speed = 1;
+        let clicks = 0;
+
+
+        const Speed = () => {
+            clicks++;
+            speed = Math.min(10, 1 + clicks * 0.5);
+            fan.style.animationDuration = (2 / speed) + 's';
+            speedDisplay.textContent = speed.toFixed(1);
+        }
+
+
+        const playFan = () => {
+            fan.classList.toggle("animate-spin");
+        }
+        const stopFan = () => {
+            fan.classList.remove("animate-spin");
+            speed = 1;
+            clicks = 0;
+            fan.style.animationDuration = '2s';
+            speedDisplay.textContent = 1;
+        }
+
+        btnOpen.addEventListener("click",playFan);
+        btnClose.addEventListener("click",stopFan);
+        addSpeed.addEventListener("click",Speed);
+        
+        
+    </script>
+</body>
+</html>

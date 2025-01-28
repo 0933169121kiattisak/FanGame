@@ -1,0 +1,12 @@
+@import "tailwindcss";
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+.line{
+    @apply absolute bg-blue-500 w-[50%] h-3.5 rounded-b-4xl origin-[0%_0%];
+}
+
+.button{
+    @apply m-2.5 px-8 rounded-2xl bg-amber-400 text-amber-50 py-1.5 hover:text-black hover:bg-transparent;
+}
